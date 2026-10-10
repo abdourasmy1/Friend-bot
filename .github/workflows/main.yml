@@ -1,15 +1,9 @@
 name: Sagil Bot
-
-on:
-workflow_dispatch:
-
-jobs:
-run-bot:
-runs-on: ubuntu-latest
-timeout-minutes: 55
+'on': workflow_dispatch:
+jobs: run-bot: runs-on: ubuntu-latest timeout-minutes: 55
 steps:
-- name: Download repository
-uses: actions/checkout@v4
+  - name: Download repository
+    uses: actions/checkout@v4
 
   - name: Set up Python
     uses: actions/setup-python@v5
@@ -21,9 +15,9 @@ uses: actions/checkout@v4
 
   - name: Run Sagil
     env:
-      BOT_TOKEN: "${{ secrets.BOT_TOKEN }}"
-      GROQ_API_KEY: "${{ secrets.GROQ_API_KEY }}"
-      SUPABASE_URL: "${{ secrets.SUPABASE_URL }}"
-      SUPABASE_SECRET_KEY: "${{ secrets.SUPABASE_SECRET_KEY }}"
-      GROQ_MODEL: "openai/gpt-oss-20b"
+      BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+      GROQ_MODEL: openai/gpt-oss-20b
     run: python -u main.py
